@@ -21,6 +21,7 @@ public class OrderApplication {
     //创建RestTemplate对象并注入spring容器
     @Bean
     //(如果有一个服务，多个端口，这个这个注解可以实现负载均衡)
+    //==================================分支测试====================
     @LoadBalanced
     public RestTemplate restTemplate(){
         return new RestTemplate();
