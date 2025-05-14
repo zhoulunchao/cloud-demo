@@ -12,6 +12,7 @@ public class OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -25,7 +26,7 @@ public class OrderService {
         //硬编码，错误的写法
 //        String url = "http://localhost:8081/user/" + order.getUserId();
         //使用注册服务与发现（eureka）之后直接调用服务
-        String url = "http://order-service/user/" + order.getUserId();
+        String url = "http://user-server/user/" + order.getUserId();
         // 2.2.发起http请求,实现远程调用获取用户id
         User user = restTemplate.getForObject(url, User.class);
         // 3.设置用户信息

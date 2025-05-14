@@ -8,6 +8,11 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   application:
     name: user-server #服务注册中心的名称
+  cloud:
+    nacos:
+      server-addr: localhost:8848 #nacos服务端的地址
+      discovery:
+        cluster-name: SH #集群名称(上海)
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
@@ -17,7 +22,11 @@ logging:
     cn.itcast: debug
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
-eureka:
-  client:
-    service-url: #eureka服务端的地址，用于client和server交互
-      defaultZone: http://localhost:10086/eureka/
+#eureka:
+#  client:
+#    service-url: #eureka服务端的地址，用于client和server交互
+#      defaultZone: http://localhost:10086/eureka/
+
+user-server:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #负载均衡规则：随机
